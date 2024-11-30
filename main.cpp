@@ -1,30 +1,32 @@
-#include "book.hpp"
-#include "user.hpp"
 #include <iostream>
+#include "library.hpp"
 
 int main()
 {
-    Book myBook("1234567890", "C++ Programming", "Bjarne Stroustrup", "Addison-Wesley", 912);
+    Library library;
 
-    std::cout << "Book Details:" << std::endl;
-    myBook.displayInfo();
+    // Kitap ve kullanıcı ekleme
+    library.addBook(Book("1234567890", "C++ Programming", "Bjarne Stroustrup", "Addison-Wesley", 912));
+    library.addBook(Book("9876543210", "Effective Modern C++", "Scott Meyers", "O'Reilly", 334));
+    library.addUser(User("U001", "Alice", "alice@example.com"));
+    library.addUser(User("U002", "Bob", "bob@example.com"));
 
-    // *********************************************************************
+    std::cout << "\n--- Library Books ---" << std::endl;
+    library.listBooks();
+    std::cout << "\n--- Library Users ---" << std::endl;
+    library.listUsers();
 
-    User user("12345", "John Doe", "john.doe@example.com");
+    std::cout << "\n--- Borrowing a Book ---" << std::endl;
+    library.borrowBook("U001", "1234567890");
 
-    user.displayInfo();
+    std::cout << "\n--- After Borrowing ---" << std::endl;
+    library.listBooks();
 
-    user.borrowBook("978-0131103627");
-    user.borrowBook("978-0262033848");
+    std::cout << "\n--- Returning a Book ---" << std::endl;
+    library.returnBook("U001", "1234567890");
 
-    std::cout << "\nAfter borrowing books:" << std::endl;
-    user.displayInfo();
-
-    user.returnBook("978-0131103627");
-
-    std::cout << "\nAfter returning a book:" << std::endl;
-    user.displayInfo();
+    std::cout << "\n--- After Returning ---" << std::endl;
+    library.listBooks();
 
     return 0;
 }
