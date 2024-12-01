@@ -6,9 +6,9 @@ Book::Book(std::string isbn,
            std::string title,
            std::string author,
            std::string publisher,
-           int pageCount) : ISBN(isbn),
-                            title(title),
-                            author(author), publisher(publisher), pageCount(pageCount), isAvailable(true) {}
+           int pageCount) : LibraryItem(title, publisher),
+                            ISBN(isbn),
+                            author(author), pageCount(pageCount), isAvailable(true) {}
 
 // Getters
 std::string Book::getISBN() const { return ISBN; }

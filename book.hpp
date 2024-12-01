@@ -2,14 +2,13 @@
 #define BOOK_H
 
 #include <string>
+#include "libraryItem.hpp"
 
-class Book
+class Book : public LibraryItem
 {
 private:
     std::string ISBN;
-    std::string title;
     std::string author;
-    std::string publisher;
     int pageCount;
     bool isAvailable;
 
@@ -28,7 +27,7 @@ public:
     // Setter
     void setAvailability(bool availability);
 
-    void displayInfo() const;
+    void displayInfo() const override;
 };
 
 #endif
