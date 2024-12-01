@@ -6,7 +6,7 @@
 class LibraryItem
 {
 protected:
-    std::string title; // Ortak özellik
+    std::string title;
     std::string publisher;
 
 public:
